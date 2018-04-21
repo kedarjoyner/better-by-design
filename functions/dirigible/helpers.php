@@ -88,7 +88,6 @@ function get_hero_image_url() {
 	return $hero_url;
 }
 
-
 function get_summary_class() {
 	if(has_post_thumbnail()) {
 		return " has_thumbnail";
