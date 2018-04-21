@@ -6,7 +6,7 @@ const livereload = require('gulp-livereload');
 
 
 gulp.task('dev-styles', function() {
-    return gulp.src('./scss/*.scss')
+    return gulp.src('./scss/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({
         browsers: ['last 2 versions']
@@ -17,7 +17,7 @@ gulp.task('dev-styles', function() {
 
 gulp.task('watch', function() {
     livereload.listen('http://bbd.localhost.com');
-    gulp.watch('./scss/*.scss', ['dev-styles']);
+    gulp.watch('./scss/**/*.scss', ['dev-styles']);
 });
 
 // The default task (called when you run `gulp` from cli)
