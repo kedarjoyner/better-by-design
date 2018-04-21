@@ -54,6 +54,17 @@ header {
 	display: flex;
 	align-items: center;
 	@extend .invert;
+
+	&.full, &.hero_photo {
+		.hero-content {
+			margin: auto;
+			z-index: 99;			
+			.hero-logo > img {
+				margin: auto;
+			}
+		}
+
+	}
 	.hero_photo {
 		@extend .inline_background_image;
 	}

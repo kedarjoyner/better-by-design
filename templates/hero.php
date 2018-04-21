@@ -23,15 +23,25 @@ function hero($hero_type) {
       $size = get_field('hero_size');
       if(is_card_page()) { $size = 'small'; }
       echo '<header class="'.$size.'">';
+        $hero_logo   = get_field('hero_logo');
         $headline    = get_page_headline('h1');
         $subheadline = get_page_subheadline('h2');
-        echo '<div class="headline">';
-          if($headline) { echo $headline; }
-          if($subheadline) { echo $subheadline; }
-        echo '</div>';
-        if ($size == 'full') {
-      		echo '<a class="scroll" href="#content"><i class="fa fa-chevron-down"></i></a>';
-      	}
+        if ($hero_logo) {	
+            echo '<div class="hero-content">';
+            echo '<div class="hero-logo">' . wp_get_attachment_image($hero_logo, array('245', '245')) . '</div>';
+            echo '<div class="headline">';
+              if($headline) { echo $headline; }
+              if($subheadline) { echo $subheadline; }
+            echo '</div></div>';
+        } else {
+            echo '<div class="headline">';
+              if($headline) { echo $headline; }
+              if($subheadline) { echo $subheadline; }
+           echo '</div>';
+        }
+          if ($size == 'full') {
+            echo '<a class="scroll" href="#content"><i class="fa fa-chevron-down"></i></a>';
+          }
         get_hero();
       echo '</header>';
       break;

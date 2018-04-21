@@ -6,6 +6,15 @@
 	}
 	&.white:after       { background: $white; }
 	&.black:after       { background: #000000; }
+	&.gradient:after { 
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-image: linear-gradient(to bottom right,#112723,#dc4225);
+	};
 	&.primary:after     { background: $primary; }
 	&.secondary:after   { background: $secondary; }
 	&.opacity_0:after   { opacity: 0; }
