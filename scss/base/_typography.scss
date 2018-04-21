@@ -1,0 +1,262 @@
+// Base Typography
+$headline_margin: ($pad*4);
+$p_margin: ($pad*4);
+
+body {
+ color: $text;
+ font-family: $font_body;
+ font-size: 14px;
+ line-height: 1.618;
+ *::selection {
+   background: rgba($primary, .8);
+   color: $white;
+ }
+ @include desktop { font-size: 16px; }
+
+}
+
+// Shared
+h1, h2, h3, h4, h5, h6 {
+	text-align: left;
+  margin-bottom: $headline_margin;
+  line-height: 1.1;
+  display: block;
+}
+
+// Sizes
+h1 {
+  @extend .headlinestyle;
+  font-size: $h1;
+  letter-spacing: -2px;
+  @include desktop { font-size: $h2; }
+}
+h2 {
+  @extend .headlinestyle;
+  font-size: $h3;
+  letter-spacing: -1px;
+  @include desktop {
+    font-size: $h2;
+    letter-spacing: -2px;
+  }
+}
+h3 {
+  @extend .headlinestyle;
+  font-size: $h3;
+  letter-spacing: -1.2px;
+}
+h4 { @extend .subheadline; }
+h5 { @extend .subheadline; }
+h6 { @extend .subheadline; }
+
+.headlinestyle {
+  font-family: $font_display;
+  color: $primary;
+  font-weight: 600;
+}
+
+.subheadline {
+	@extend .smallcaps;
+}
+
+.smallcaps {
+  font-family: $font_caps;
+  text-transform: uppercase;
+  line-height: 1.5;
+	letter-spacing: 1.4px;
+	font-size: $caps;
+  color: $primary;
+	font-weight: bold;
+}
+
+.smalltext {
+	font-size: $small;
+	line-height: 1.5;
+}
+
+
+p {
+  margin-bottom: $p_margin;
+  strong { color: $text_mute; }
+  &:last-child {
+    margin-bottom: 0px;
+    button, .button { margin-bottom: 0px; }
+  }
+}
+
+section.two_columns article, section.three_columns article {
+  @include desktop {
+   p {
+     margin-bottom: 0px;
+     padding-bottom: $p_margin;
+     &:last-child {
+       padding-bottom: 0px; }
+   }
+  }
+}
+
+
+.button, button, input[type="submit"], .submit {
+  @extend .buttonstyle;
+}
+
+.acf-map, .dynamic-map {
+  button {
+    transition: none;
+    border: 0px solid $white !important;
+    min-height: 0px !important;
+    &:hover {
+      border: 0px solid $white !important;
+    }
+  }
+}
+
+
+a {
+  color: $text_mute;
+  outline: none;
+	text-decoration: none;
+}
+
+
+.text, .blog_post, .image_with_content, p {
+  a:not(.button) { @extend .inlinelink; }
+  ul, ol {
+    a:not(.button) { @extend .inlinelink; }
+  }
+}
+
+main, .mce-content-body {
+  ol, ul {
+   padding: 0px ($pad*4) ($pad*3) ($pad*4);
+   ol, ul {
+  	 padding: $pad 0px 0px ($pad*3);
+     li:last-child {
+       margin-bottom: 0px;
+       padding-bottom: 0px;
+     }
+   }
+   li {
+     padding-left: $pad;
+  	 margin: 0px 0px $pad 0px;
+   }
+  }
+}
+
+ul {  list-style: disc; }
+footer {
+  ol, ul {
+    padding: 0px; margin: 0px;
+    li, li:last-child { margin: 0px; padding: 0px; }
+  }
+}
+
+blockquote {
+  $size : ($pad*4);
+  font-family: $font_display;
+  color: $primary;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -(0.8px);
+  padding: 0px ($pad*5);
+  margin: 0px;
+  line-height: 1.5;
+  position: relative;
+  text-align: center;
+  h4 {
+    margin: ($pad*4) 0px 0px 0px;
+    text-align: center;
+    opacity: .5;
+  }
+  svg  {
+    margin: 0  auto;
+    opacity: .5;
+    display: block !important;
+    color: $primary;
+    margin-bottom: ($pad*4);
+  }
+  @include desktop {
+    font-size: 24px;
+    letter-spacing: -1px;
+  }
+  .invert & {
+    color: $white;
+    &:before, h4, p { color: $white; }
+  }
+}
+
+
+.buttonstyle {
+	@extend .smallcaps;
+  background: none;
+  color: $button;
+  display: inline-block;
+	padding: 0px ($pad*2);
+	line-height: 32px;
+	min-height: 38px;
+  margin: 0px auto ($pad*3) auto;
+  width: auto;
+  border: 2px solid $button !important;
+  cursor: pointer;
+	border-radius: $borders;
+  &:hover, &:focus {
+    border: 2px solid $button !important;
+  }
+  &:hover {
+    background: $button;
+    color: $white;
+  }
+  &.secondary {
+    border: 2px solid $secondary !important;
+    color: $secondary;
+    &:hover {
+      background: $secondary;
+      color: $white;
+    }
+  }
+  &.solid {
+    background: $button;
+    color: $white;
+    &:hover {
+      background: lighten($button, 5%);
+      border: 2px solid lighten($button, 5%) !important;
+    }
+    &.secondary {
+      background: $secondary;
+      &:hover {
+        background: lighten($secondary, 5%);
+        border: 2px solid lighten($secondary, 5%) !important;
+      }
+    }
+  }
+  &:not(:only-child) {
+    margin: 2px;
+  }
+}
+
+.inlinelink {
+	font-weight: bold;
+	color: $text;
+  position: relative;
+  outline: none;
+  vertical-align: bottom;
+  text-decoration: none;
+  border-bottom: 1px solid rgba($black,0.4);
+  transition: background-color 0.3s, border-color 0.3s;
+  &:focus, &:hover {
+    color: $primary;
+    border-color: rgba($black,0);
+  	background-color: rgba($black,0.1);
+  }
+  .invert & {
+    color: $white;
+    border-bottom: 1px solid rgba($white,0.4);
+    &:focus, &:hover {
+      color: $white;
+      border-color: rgba($white,0);
+    	background-color: rgba(0,0,0,0.4);
+    }
+  }
+}
+
+h2 + h4 { margin: -($headline_margin/2) 0px $headline_margin 0px;  }
+p + h4 + p { margin-top: -$headline_margin;  }

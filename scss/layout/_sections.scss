@@ -1,0 +1,104 @@
+$section_padding_mobile: ($pad*6);
+$section_padding_full: ($pad*10);
+
+body {
+	background: $white;
+}
+
+section {
+	padding: $section_padding_mobile 0px;
+	@include desktop {
+		padding: $section_padding_full 0px;
+	}
+	&.white {
+		border-color: $white;
+		background: $white;
+	}
+	&.gray {
+		border-color: $gray;
+		background: $gray;
+	}
+	&.dark {
+		border-color: $black;
+		background: $black;
+		@extend .invert;
+	}
+	&.primary {
+		border-color: $primary;
+		background: $primary;
+		@extend .invert;
+	}
+	&.secondary {
+		border-color: $secondary;
+		background: $secondary;
+		@extend .invert;
+	}
+	&.image {
+		padding: ($section_padding_mobile*2) 0px;
+		@extend .invert;
+		@include desktop {
+			padding: ($section_padding_full*2) $section_padding_full;
+		}
+	}
+	&.two_columns article, &.three_columns article {
+		@include desktop {
+			column-count: 2;
+			column-gap: 0px;
+		}
+	}
+	&.three_columns article {
+		@include break(800px) {
+			column-count: 3;
+			column-gap: 0px;
+		}
+	}
+	.background_image {
+		@extend .inline_background_image;
+	}
+}
+
+/* HEADLINE BLOCKS
+===================================*/
+article.headline {
+	column-count: 1 !important;
+	padding-bottom: ($pad*6);
+	.subheadline {
+		margin-bottom: 0px;
+	}
+}
+
+// Remove Padding From Similar Content
+section.dark + section.dark,
+section.gray + section.gray,
+section.primary + section.primary,
+section.secondary + section.secondary,
+section.white + section.white{
+	margin-top: -$section_padding_mobile;
+	@include desktop { margin-top: -$section_padding_full; }
+}
+
+header.no_hero + #content + section.white,
+header.no_hero + #content + section.archive {
+	padding-top: 0px;
+}
+
+// Exceptions
+section.image_with_content + section,
+section + section.image_with_content,
+section.image_grid.full_width + section,
+section + section.image_grid.full_width,
+section.text.image + section.text.image,
+section.image_grid:not(.full_width) + section.image_grid.full_width,
+section.gallery + section {
+	margin-top: 0px !important;
+	@include desktop { margin-top: 0px !important; }
+}
+
+section.gallery + footer {
+	margin-top: (($section_padding_mobile)-($pad));
+	@include desktop { margin-top: (($section_padding_full)-($pad)); }
+}
+
+body.parallax .inline_background_image {
+	@include desktop { background-attachment: fixed; }
+}

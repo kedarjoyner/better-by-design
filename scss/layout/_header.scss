@@ -1,0 +1,126 @@
+/* SIZES
+**********************************************/
+$header_full       : $pad*84;
+$header_large      : $pad*70;
+$header_medium     : $pad*50;
+$header_small      : $pad*34;
+$video_break       : 700px;
+$video_break_large : 900px;
+
+header {
+	height: $header_medium;
+	&.small {
+		height: $header_small;
+		@include desktop { height: $header_small;	}
+	}
+	&.medium {
+		height: $header_small;
+		@include desktop { height: $header_medium;	}
+	}
+	&.large, &.slider {
+		height: $header_medium;
+		@include desktop { height: $header_large;	}
+	}
+	&.full {
+		float: none;
+		height: $header_large;
+		@include desktop { height: $header_full; }
+	}
+	&.video_hero {
+		height: $header_medium;
+		.kgvid_wrapper { height: $header_medium; }
+		@include large_video { height: $header_large; }
+	}
+	&.no_hero {
+		height: auto;
+		display: block;
+		padding: $pad*6 0px;
+		h1, h2 {
+			display: block;
+			color: $primary;
+			text-align: center;
+			margin: 0px;
+		}
+		h1 + h2  { margin-top: $pad; }
+	}
+}
+
+
+
+/* STYLES
+**********************************************/
+header {
+	position: relative;
+	display: flex;
+	align-items: center;
+	@extend .invert;
+	.hero_photo {
+		@extend .inline_background_image;
+	}
+	.headline {
+		@extend .center;
+		position: relative;
+		z-index: 5;
+		max-width: $onecol;
+		margin: 0 auto;
+	}
+	h1 {
+		margin: $pad 0px 0px 0px;
+		font-size: $h2;
+		@include desktop { font-size: $h1; }
+	}
+	h2 {
+		@extend .smallcaps;
+	}
+	h1 + h2 { margin: $headline_margin/2 0px 0px 0px; }
+	.scroll {
+		@extend .pulse;
+		position: absolute;
+		z-index: 2;
+		bottom: ($pad*6);
+		left: 50%;
+		margin-left: -15px;
+		&:hover {
+			transform: scale(1.5);
+			animation-play-state: paused;
+		}
+	}
+}
+
+/* VIDEO HEADER
+*********************************/
+header.video_hero {
+	overflow: hidden;
+	position: relative;
+	.hero_photo {
+		display: block;
+		@include video { display: none; }
+	}
+	.kgvid_wrapper {
+		margin: 0px;
+		height: 100%;
+		width: 100%;
+		display: none;
+		position: absolute !important;
+		top: 0px;
+		z-index: 1;
+		.fitvidsignore {
+			height: 100%;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		video  {
+			height: 100%;
+			width: auto;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+		@include video { display: block; }
+	}
+	.video_overlay {
+		z-index: 2;
+		display: none;
+		@extend .fitparent;
+		@include video { display: block; }
+	}
+}

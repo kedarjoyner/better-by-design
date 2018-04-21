@@ -1,0 +1,27 @@
+/*
+Theme Name: Dirigible Studio
+Theme URI: http://dirigiblestudio.com
+Author: Kindra Goehler & Sam Farrell
+Author URI: http://dirigiblestudio.com
+Description: Custom Theme
+Version: 1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: Custom
+*/
+
+// base styles
+@import 'base/variables';
+@import 'base/breakpoints';
+@import 'base/reset';
+@import 'base/wordpress';
+@import 'base/grid';
+@import 'base/typography';
+
+// layouts
+@import 'layout/sections';
+@import 'layout/animations';
+@import 'layout/classes';
+
+// modules
+@import 'modules/acf';

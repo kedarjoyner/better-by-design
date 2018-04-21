@@ -1,0 +1,47 @@
+$desktop_break : $pad*75;
+$video_break   : $pad*88;
+$video_large   : $pad*115;
+$desktop_menu  : ($pad*94);
+$sidebar       : $pad*88;
+
+@mixin desktop {
+  @media screen and (min-width: $desktop_break) {
+    @content;
+  }
+}
+
+@mixin sidebar {
+  @media screen and (min-width: $sidebar) {
+    @content;
+  }
+}
+
+@mixin desktop_menu {
+  @media screen and (min-width: $desktop_menu) {
+    @content;
+  }
+}
+
+@mixin mobile_menu {
+  @media screen and (max-width: (($desktop_menu)-1)) {
+    @content;
+  }
+}
+
+@mixin video {
+  @media screen and (min-width: $video_break) {
+    @content;
+  }
+}
+
+@mixin large_video {
+  @media screen and (min-width: $video_large) {
+    @content;
+  }
+}
+
+@mixin break($width) {
+  @media screen and (min-width: $width) {
+    @content;
+  }
+}

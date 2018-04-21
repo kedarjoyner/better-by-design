@@ -1,0 +1,35 @@
+footer {
+	color: $white;
+	text-align: center;
+	div {
+		position: relative;
+		z-index: 2;
+	}
+	section.footer {
+		padding: ($pad*8) ($pad*2);
+	}
+	p {
+		@extend .smalltext;
+		margin-bottom: 0px;
+		a {
+			border-bottom: none !important;
+			&:hover {
+				opacity: .9;
+				background: none !important;
+			}
+		}
+	}
+
+	nav.footer {
+		list-style: none;
+		padding: ($pad*2) 0px;
+		li { display: inline-block; }
+		a {
+			@extend .smallcaps;
+			padding: 0px ($pad);
+			color: $white;
+			opacity: 1;
+			&:hover { opacity: .8; }
+		}
+	}
+}

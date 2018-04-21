@@ -1,0 +1,355 @@
+$menu_background: $white;
+$mobile_borders: $gray;
+$menu_text_color: $primary;
+$sub_menu_width: ($pad*24);
+
+.menulink {
+	@extend .smallcaps;
+	display: block;
+	line-height: 3em;
+	color: $menu_text_color;
+	opacity: 1;
+	&:hover { opacity: .8; }
+}
+
+a.logo {
+	$real_width    : 1400px;
+	$real_height   : 577px;
+	$height        : 20px;
+	$width         : (($real_width*$height)/$real_height);
+	text-indent: -9999px;
+	background: url('../images/greenlogo.svg');
+	width: $width;
+	height: $height;
+	background-size: $width $height;
+	display: none;
+	&.mobile {
+		display: block;
+		float: left;
+		z-index: 99;
+	}
+}
+
+a.toggle {
+	float: right;
+	line-height: 0px;
+	z-index: 10;
+	font-size: 24px;
+	cursor: pointer;
+	opacity: 1;
+	color: $menu_text_color;
+	i:before { content: '\f0c9'; }
+	&:hover  { opacity: .8; }
+}
+
+
+body.no_hero main {
+	padding-top: $menu_height;
+}
+
+/* Menu Overrides before the user scrolls,
+ * to make it more legible against the hero.
+ ***************************************************/
+body.no_hero:not(.scrolled) {
+	nav.main, nav.mobile {
+		background: $gray;
+		box-shadow: none;
+	}
+	nav.main ul.top_level .sub-menu {
+		background: $gray;
+		box-shadow: none;
+	}
+}
+
+body:not(.scrolled):not(.no_hero)  {
+	nav.main {
+		background: none;
+		box-shadow: 0px 0px 0px 0px rgba(0,0,0,.1);
+		ul.top_level a:not(.logo) {
+			color: $white;
+		}
+		.sub-menu {
+			box-shadow: none;
+		}
+	}
+	nav.mobile {
+		background: none;
+		box-shadow: 0px 0px 0px 0px rgba(0,0,0,.1);
+		a.toggle {
+			color: $white;
+		}
+	}
+	#searchsubmit {
+		color: $white;
+	}
+	ul.top_level .searchform input[type="text"] {
+		color: $white;
+		&:focus {
+			background: rgba(0,0,0,.3);
+		}
+	}
+	a.logo {
+		background: url('../images/whitelogo.svg');
+	}
+	&.menu_is_open {
+		.nav_back { opacity: 0; }
+		a.toggle { color: $menu_text_color; }
+	}
+	@include desktop_menu {
+		nav.main ul.top_level .sub-menu  { background: none; }
+	}
+}
+
+
+main {
+	position: relative;
+	.close_menu {
+		top: 0px;
+		left: 0px;
+		z-index: 10;
+		background: rgba(0,0,0,0);
+		cursor: pointer;
+	}
+}
+
+
+/* Mobile Menu Body
+ ***************************************************/
+nav.mobile {
+	display: block;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: 99;
+	padding: ($pad*2);
+	background: $menu_background;
+	box-shadow: 0px 0px 16px 0px rgba(0,0,0,.1);
+}
+
+/* when the menu drawer is pulled out
+ ***************************************************/
+body.menu_is_open {
+	nav.main {
+		right: 0px;
+		a:not(.logo) {
+			color: $menu_text_color !important;
+		}
+	}
+	nav.mobile {
+		right: $menu_width;
+		left: -$menu_width;
+		background: none;
+		box-shadow: 0px 0px 0px 0px rgba(0,0,0,.1);
+	}
+	main, .nav_back, .mobile_logo {
+		transform: translateX(-$menu_width);
+	}
+	.close_menu {
+		background: rgba(0,0,0,.6);
+		right: 0px;
+		bottom: 0px;
+		position: fixed;
+	}
+	a.toggle {
+		color: $white !important;
+		i:before { content: '\f00d'; }
+	}
+}
+
+
+/* Side Pullout Mobile Menu
+ ***************************************************/
+nav.main {
+	background: $menu_background;
+	width: $menu_width;
+	position: fixed;
+	z-index: 99;
+	right: -$menu_width;
+	top: 0px;
+	bottom: 0px;
+	transition: background .5s ease-in-out;
+	ul.top_level > li {
+		border-bottom: 1px solid $mobile_borders;
+		&:last-child { border-bottom: 0px; }
+		&:hover > a { background: $mobile_borders; }
+		&:before, &:after { display: none; }
+	}
+	ul.top_level, ul.sub-menu {
+		margin: 0px;
+		padding: 0px;
+		list-style: none;
+		a:not(.logo) {
+			color: $primary;
+			&:hover { opacity: 1; }
+		}
+	}
+	ul.sub-menu {
+		animation: slide_from_top .2s ease-in-out;
+		display: none;
+		font-style: normal;
+		padding-bottom: 0px;
+		background: $mobile_borders;
+		a {
+			cursor: pointer;
+			padding: 0px 0px 0px ($pad*3);
+			&:hover {
+				position: relative;
+			  background: darken($mobile_borders, 5%);
+			}
+		}
+	}
+	a:not(.logo) {
+		@extend .menulink;
+		line-height: 3em;
+		padding: ($pad) ($pad*3);
+		display: block;
+		margin: 0px;
+	}
+	li {
+		margin: 0px;
+		padding: 0px;
+		&.menu-item-has-children {
+			&:hover {
+				ul.sub-menu {
+					display: block;
+				}
+			}
+		}
+	}
+}
+
+
+/* Desktop menu
+ * This is going to override all of the mobile menu
+ * styles.
+ ***************************************************/
+@include desktop_menu {
+	nav.mobile {
+		display: none;
+	}
+	a.toggle {
+		display: none;
+	}
+	a.logo {
+		display: block;
+		float: left;
+		padding: 0px;
+		margin: ($pad*2);
+		&.mobile { display: none; }
+	}
+	nav.main ul.sub-menu  {
+		padding: 0px 0px $pad 0px;
+		width: $sub_menu_width;
+		animation: slide_from_right .2s ease-in-out;
+		border-radius: 0px 0px $borders $borders;
+		box-shadow: 0px 4px 4px 0px rgba(0,0,0, .08);
+		position: absolute;
+		margin-top: 0px;
+		left: 0px;
+		background: $white;
+		a {
+			padding: ($pad) ($pad*3);
+			line-height: 1.1;
+			&:hover {
+				background: none;
+			}
+		}
+	}
+	nav.main {
+		padding: 0px;
+		width: 100%;
+		z-index: 99;
+		right: auto;
+		top: auto;
+		bottom: auto;
+		left: auto;
+		background: $menu_background;
+		box-shadow: 0px 0px 16px 0px rgba(0,0,0,.1);
+		text-align: center;
+		position: fixed;
+		ul.top_level {
+			float: right;
+			margin-right: ($pad);
+			a:not(.logo) {
+				text-align: left;
+				&:hover { opacity: .8; }
+			}
+			> li {
+				display: inline-block;
+				border-bottom: 0px;
+				position: relative;
+				&:hover a { background: none; }
+				> a {
+					display: inline-block;
+					&:after { display: none;  }
+				}
+				&:before, &:after {
+					display: block;
+				}
+				&:last-child .sub-menu{
+					left: auto;
+					right: 0px;
+					a {
+						text-align: right;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+/* Search form
+ ***************************************************/
+ul.top_level .searchform {
+	display: block;
+	@extend .menulink;
+	@include desktop_menu {
+		margin: ($pad) 0px;
+	}
+	input {
+		background: none;
+		border: none;
+		&[type="text"] {
+			font-family: inherit;
+			text-transform: inherit;
+			font-weight: inherit;
+			letter-spacing: inherit;
+			height: 3em;
+			padding: 0px $pad;
+			line-height: 3em;
+			z-index: 999999;
+			color: $menu_text_color;
+			@include mobile_menu {
+				padding-left: ($pad*3);
+			}
+			@include desktop_menu {
+				text-indent: -9999px;
+				width: ($pad*4);
+			}
+			&:focus {
+				text-indent: 0px;
+				z-index: 10;
+				background: $gray;
+				@include desktop_menu {
+					width: ($pad*25);
+				}
+			}
+		}
+	}
+	button, input[type="submit"] {
+		border-width: 0px !important;
+		margin: 1px;
+		min-height: 0px;
+		padding: 1px 8px;
+		height: auto;
+		color: $primary;
+		opacity: 1;
+		&:hover, &:focus {
+			border-width: 0px !important;
+			background: none;
+			opacity: .9;
+		}
+	}
+}

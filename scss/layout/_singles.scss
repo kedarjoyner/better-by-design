@@ -1,0 +1,115 @@
+
+/* Custom Singles
+**************************************/
+section.single_location,
+section.single_person,
+section.single_event  {
+	$img_size : $pad*30;
+	$img_size_small : $pad*18;
+	article {
+		max-width: $pad*120;
+	}
+	figure {
+		margin: 0 auto $pad*4 auto;
+		max-width: $onecol;
+	}
+	.headshot {
+		background: $gray;
+		display: block;
+		width: $img_size_small;
+		height: $img_size_small;
+		border-radius: 50%;
+		overflow: hidden;
+		margin: 0 auto;
+		position: relative;
+		backface-visibility: hidden;
+		transform: translate3d(0, 0, 0);
+		z-index:1;
+		margin-bottom: $pad*4;
+		@include desktop {
+			width: $img_size;
+			height: $img_size;
+		}
+		svg, img { transform: scale(1); 	}
+		svg {
+			display: block;
+			text-align: center;
+			font-size: 80px;
+			margin: 30px 0px 0px 32px;
+			color: $gray_hover;
+		}
+		&.empty {
+			width: $img_size_small;
+			height: $img_size_small;
+		}
+	}
+	.headline {
+		h1, h2, h4 { text-align: center; }
+		h1 { margin-bottom: 0px; }
+		h1 + h4 { margin: $pad 0px $pad*6 0px; }
+		h4 a {
+			color: inherit;
+			&:hover { opacity: .9; }
+		}
+	}
+	.information {
+		@include sidebar {
+			display: flex;
+			justify-content: center;
+			flex-direction: row;
+		}
+	}
+	.description {
+		text-align: left;
+		padding-top: $pad*6;
+		@include sidebar {
+			flex-grow: 1;
+			padding-left: $pad*4;
+			padding-top: 0px;
+		}
+	}
+	.contact {
+		text-align: center;
+		width: $pad*40;
+		margin: 0 auto;
+		max-width: 100%;
+		background: $gray;
+		padding: $pad*3 $pad;
+		border-radius: $borders;
+		@include sidebar {
+			align-self:flex-start;
+			flex-grow: 0;
+	    flex-shrink: 0;
+			flex-basis: $pad*40;
+		}
+		.return {
+			margin-top: ($pad*2);
+		}
+		ul.tags {
+			@extend .taglist;
+			padding: $pad*2 0px 0px 0px;
+		}
+		p {
+			margin-bottom: $pad;
+			&:not(.address) {
+				@extend .smalltext;
+			}
+		}
+		.media {
+			padding: 0px;
+			margin: 0px;
+			li { margin: 0px; padding: 1px; }
+		}
+	}
+	.event_details {
+		font-weight: bold;
+		margin-bottom: $pad*2;
+		p {
+			margin-bottom: 0px;
+			font-size: 16px !important;
+			&.date {
+				font-size: 22px !important;
+			}
+		}
+	}
+}

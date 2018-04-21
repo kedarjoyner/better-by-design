@@ -1,0 +1,76 @@
+$badge_width : ($pad*16);
+$eventpad : ($pad*3);
+
+.date_badge {
+  display: block;
+  color: $primary;
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+  @extend .smallcaps;
+  span {
+    display: block;
+    line-height: 1;
+    &.day {
+      font-size: 32px;
+      padding-bottom: ($pad);
+      @include break(500px) {
+        font-size: 40px;
+      }
+    }
+  }
+}
+
+.event_preview {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: ($eventpad);
+  position: relative;
+  margin-bottom: ($pad);
+  @include desktop { flex-direction: row; }
+  .description {
+    flex-grow: 1;
+    h3 { margin-bottom: $pad*2; }
+  }
+  ul.information {
+    margin: $pad*2 0px 0px -14px;
+    padding: 0px;
+    @extend .taglist;
+    li {
+      font-size: 12px;
+      background: $white
+    }
+  }
+  .date_badge {
+    margin: 0 auto $pad*4 auto;
+    @include desktop {
+      flex-grow: 0;
+	    flex-shrink: 0;
+			flex-basis: $badge_width;
+      margin: 0 auto;
+    }
+  }
+  p { margin-bottom: 0px;  }
+  a.event_overlay{ @extend .fitparent;  }
+  &:hover {
+    .date_badge {
+      transform: scale(1.1) translateY(2px);
+      @include desktop {
+        transform: scale(1.4) translateY(12px);
+      }
+    }
+    ul.information {
+      margin: $pad*2 0px 0px 0px;
+      li { background: $gray;  }
+    }
+  }
+}
+
+section.event_block  article {
+  max-width: $twocol;
+}
+
+section.taxonomy_list + section.gallery {
+  padding-top: 0px;
+}

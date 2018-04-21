@@ -1,0 +1,45 @@
+section {
+	@extend .clearfix;
+	position: relative;
+	margin: 0;
+	z-index: 1;
+}
+
+article {
+	@extend .clearfix;
+	max-width: $page;
+	margin: 0px auto;
+}
+
+.full, .half, .third, .fourth, .fourths, .listing {
+	padding: 0px $gutter;
+	@include desktop { float: left; }
+}
+
+.full {
+	width: 100%;
+}
+
+.half {
+	width: 100%;
+	@include desktop { width: 50%; }
+}
+
+.third, .thirds {
+	width: 100%;
+	@include desktop {
+		width: 33.3333333%;
+		&.two { width: 66.6666666%; }
+		&.right { float: right; }
+	}
+}
+
+.fourth, .fourths {
+	width: 100%;
+	@include desktop {
+		width: 25%;
+		&.two { width: 50%; }
+		&.three { width: 75%; }
+		&.right { float: right; }
+	}
+}

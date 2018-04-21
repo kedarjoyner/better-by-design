@@ -1,0 +1,133 @@
+a.media_img {
+  position: static;
+  display: inline !important;
+  &:before {
+    display: none;
+  }
+}
+
+
+.post {
+  @include desktop { font-size: 16px; }
+  img {
+    &.aligncenter { @extend .blogaligncenter; }
+    &.alignleft   { @extend .blogalignleft;   }
+    &.alignright  { @extend .blogalignright;  }
+  }
+  h1.post_title {
+    font-size: $h1;
+    margin: $pad*2 0px $pad 0px;
+  }
+  .wp-caption {
+    width: auto;
+    border-bottom: 1px solid $gray_dark;
+    a.media_img {
+      display: block;
+      width: 100%;
+      img { width: 100%;  }
+    }
+    p {
+      font-size: 12px;
+      padding: $pad 0px;
+      color: $text_mute;
+      margin-bottom: 0px;
+    }
+    &.aligncenter { @extend .blogaligncenter; }
+    &.alignleft   { @extend .blogalignleft;   }
+    &.alignright  { @extend .blogalignright;  }
+  }
+
+}
+
+section.post_categories {
+  padding: $pad*2;
+  text-align: center;
+  ul.categories {
+    padding: 0px !important;
+    @extend .taglist;
+    li a {
+      text-decoration: none;
+      border-bottom: none;
+      &:hover {
+        background: none;
+        color: $text;
+      }
+    }
+  }
+}
+
+section.post, .mce-content-body {
+  article {
+    max-width: $blog;
+  }
+  aside {
+    padding: $pad $pad*2;
+  }
+}
+
+.blogaligncenter,
+.blogalignright,
+.blogalignleft {
+  float: none;
+  width: auto;
+  max-width: none;
+  margin: $gutter;
+  margin-left: -$gutter;
+  margin-right: -$gutter;
+  img { width: 100%; }
+  p { padding: 10px; }
+  @include desktop {
+    p { padding: $pad 0px; }
+  }
+}
+
+.blogaligncenter {
+  width: auto !important;
+  @include desktop {
+    width: auto !important;
+    margin: ($pad*4) 0px;
+  }
+}
+.blogalignleft {
+  width: auto !important;
+  @include desktop {
+    float: left;
+    margin: $pad ($pad*3) $pad 0px;
+    width: 50% !important;
+  }
+}
+.blogalignright {
+  width: auto !important;
+  @include desktop {
+    float: right;
+    margin: $pad 0px $pad ($pad*3);
+    width: 50% !important;
+  }
+}
+
+
+section.post.nav {
+  background: $gray;
+  a:hover { text-decoration: none; }
+  .right {
+    h4, p { text-align: right; }
+    @include desktop { float: right; }
+  }
+  .half {
+    a {
+      padding: ($pad*2) 0px;
+      display: block;
+      font-weight: normal;
+      h4 {
+        margin-bottom: 0px;
+      }
+      h4, p {
+        @include desktop { text-align: center; }
+      }
+      &:hover {
+        background: none;
+        color: $text;
+      }
+    }
+  }
+}
