@@ -15,15 +15,18 @@ $threecol         :   $pad*150;     // three columns of text
 $menu_width       : ($pad*32);
 $menu_height      : 52px;
 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Roboto:400,500,700');
+
 // Fonts
-$font_caps    : "sofia-pro",sans-serif;
-$font_display : "le-monde-livre-std",serif;
-$font_body    : "sofia-pro",sans-serif;
+$font_caps    : "Roboto", sans-serif;
+// $font_display : "le-monde-livre-std",serif;
+$font_display : "Roboto", sans-serif;
+$font_body    : "Open Sans",sans-serif;
 
 // Palette
 $white  : #ffffff;
 $muted  : #646172;
-$black  : #4a4949;
+$black  : #000000;
 $red    : #bf542a;
 $green  : #45584c;
 $blue   : #274080;
@@ -39,9 +42,9 @@ $black_hover : lighten($black, 5%);
 $black_dark  : darken($black, 5%);
 
 // Colors
-$primary     : $green;
+$primary     : $black;
 $secondary   : $orange;
-$text        : #808080;
+$text        : #494949;
 $text_mute   : lighten($text, 15%);
 $text_light  : lighten($text, 30%);
 
