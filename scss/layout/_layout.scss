@@ -156,12 +156,20 @@ section.people {
 section.people {
 	$img_size : ($pad*16);
 	text-align: center;
+	
+	article.headline {
+		z-index: 2;
+		position: relative;
+	}
 	.people_filter { @extend .taglist; }
 	.full_width_people {
 		padding: 0px ($pad*2);
 		.person {
 			@include desktop { width: 33.3333%; }
 			@include break(800px) { width: 25%; }
+		}
+		.people_container {
+			z-index: 2;
 		}
 	}
 	.headshot {

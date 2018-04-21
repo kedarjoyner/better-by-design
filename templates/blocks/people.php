@@ -59,5 +59,13 @@ function people($layout, $i) {
       }
     if(!$full_width) { echo '</div></article>'; }
     else { echo '</div>'; }
+    if( $background === 'image') {
+      $color    = get_sub_field('overlay');
+    	$opacity  = get_sub_field('overlay_opacity');
+      $image    = get_sub_field('image');
+    	$class    = 'background_image overlay '.$color.' opacity_'.$opacity;
+    	$style    = 'background-image: url('.$image['sizes']['large'].');';
+      echo '<div class="'.$class.'" style="'.$style.'"></div>';
+    }
   echo '</section>';
 }
