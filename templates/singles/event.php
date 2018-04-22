@@ -97,7 +97,7 @@ echo '</section>';
 
 if ( $event_speakers ) {
 	// Start of speaker section
-	echo '<section class="people">';
+	echo '<section class="people gray">';
 		echo '<article>';
 			echo '<div class="full">';
 			echo '<div class="headline center"><h1>Speakers<h1></div>';
