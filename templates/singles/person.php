@@ -58,4 +58,44 @@ if($cats) {
 }
 
 
+function check_for_event( $findTitle ) {
+
+	global $posts;
+
+	$events = get_posts(array(
+		'posts_per_page'	=> -1,
+		'post_type'			=> 'events'
+	));
+	
+	if ($posts) {
+	
+		foreach( $events as $post ) {
+	
+			setup_postdata( $post );
+
+			$event_title = get_the_title($post, $post->ID);
+	
+			$speakers = get_field('event_speakers', $post->ID);
+
+			
+			if (is_array($speakers) || is_object($speakers) ) {
+				foreach( $speakers as $speaker ) {
+					if ( $speaker->post_title === $findTitle ) {
+						echo $event_title;
+					} else {
+						false;
+					}
+				}
+			}
+			
+		}	
+		wp_reset_postdata();
+	
+	}
+}
+
+// display event;
+check_for_event($name);
+
+
 ?>

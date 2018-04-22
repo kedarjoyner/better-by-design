@@ -159,6 +159,7 @@ if ( $event_speakers ) {
 }
 
 
+
 // Show gallery of event images
 if($gallery) {
 	echo '<section class="gallery white">';
@@ -174,5 +175,12 @@ if($location) {
     echo '</div>';
   echo '</section>';
 }
+
+
+
+
+
+
+
 
 ?>
