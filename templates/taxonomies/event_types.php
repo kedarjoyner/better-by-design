@@ -2,6 +2,8 @@
 date_default_timezone_set('America/Chicago');
 $today      = date('Ymd');
 
+$term = get_queried_object();
+
 $args = array(
 	'post_type' => 'events',
 	'post_status' => 'publish',
@@ -16,7 +18,8 @@ $args = array(
 	'tax_query' => array(
 		array(
 			'taxonomy' => 'event_types',
-			'terms' => '24'
+			'field'    => 'term_id',
+			'terms' => $term->term_id,
 		)
 	)
 );
