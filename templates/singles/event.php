@@ -13,6 +13,47 @@ $site        = get_field('website');
 $gallery     = get_field('gallery');
 $events_page = get_field('events_page', 'options');
 
+
+$event_speakers = get_field('event_speakers');
+
+if ( $event_speakers ) {
+
+	echo '<section class="single_person">';
+	foreach( $event_speakers as $post) {
+
+		// makes global post equal to the speakers object
+		setup_postdata($post);
+
+		$speaker_image = get_field('headshot');
+		$name 		= get_the_title();
+		$link 		= get_the_permalink();
+		$job 		= get_field('job_title');
+		$headshot = get_field('headshot');	
+		
+		echo '<article>';
+		echo '<a href="'.get_the_permalink().'">';
+		echo '<div class="full">';
+		if($headshot) {
+			echo '<div class="headshot">';
+				echo '<img src="'.$headshot['sizes']['thumbnail'].'" alt="'.$headshot['alt'].'"/>';
+			echo '</div>';
+		}
+		else {
+			echo '<div class="headshot empty">';
+				echo '<i class="fa fa-user"></i>';
+			echo '</div>';
+		}
+		echo '<div class="headline">';
+			echo '<h1>'.$name.'</h1>';
+			if($job) { echo '<h4>'.$job.'</h4>'; }
+		echo '</div>';
+		echo '</a>';
+		echo '</article>';
+	}
+	echo '</section>';
+	wp_reset_postdata(); // reset post object to global post
+}
+
 echo '<section class="single_event white">';
 	echo '<article>';
 		echo '<div class="full">';
@@ -23,6 +64,14 @@ echo '<section class="single_event white">';
 		}
 		echo '<div class="headline">';
 			echo '<h1>'.$title.'</h1>';
+			$types = get_the_terms(get_the_id(), 'event_types');
+			if($types) {
+				echo '<section class="taxonomy_list">';
+					echo '<ul class="location_types">';
+						foreach ($types as $type) { echo '<li><a href="'.get_term_link( $type ).'">'.$type->name."</a></li>"; }
+					echo '</ul>';
+				echo '</section>';
+			}
 			echo '<h4>';
 				echo $date->format('l, F jS, Y');
 				if($multi_day && $end_date) { echo ' — '.$end_date->format('l, F jS, Y'); }
@@ -70,6 +119,7 @@ echo '</section>';
 
 
 $cats = get_the_terms(get_the_id(), 'event_categories');
+
 if($cats) {
 	echo '<section class="taxonomy_list">';
 		echo '<ul class="location_types">';
@@ -77,6 +127,7 @@ if($cats) {
 		echo '</ul>';
 	echo '</section>';
 }
+
 
 
 if($gallery) {
