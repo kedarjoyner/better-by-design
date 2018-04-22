@@ -150,6 +150,11 @@ section.image_pull {
 
 /* PEOPLE
 ===================================*/
+
+section.people.image  .people_filter {
+	position: relative;
+	z-index: 2;
+}
 section.people {
 	article { max-width: $page; }
 }
