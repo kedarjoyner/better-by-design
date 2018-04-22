@@ -90,54 +90,83 @@ echo '<section class="single_event white">';
 	echo '</article>';
 echo '</section>';
 
-// Display speakers
+
+/*
+* Display speakers associated with event
+*/
 
 if ( $event_speakers ) {
-
-	echo '<section class="single_person">';
-	foreach( $event_speakers as $post) {
-
-		// makes global post equal to the speakers object
-		setup_postdata($post);
-
-		$speaker_image = get_field('headshot');
-		$name 		= get_the_title();
-		$link 		= get_the_permalink();
-		$job 		= get_field('job_title');
-		$headshot = get_field('headshot');	
-		
+	// Start of speaker section
+	echo '<section class="people">';
 		echo '<article>';
-		echo '<a href="'.get_the_permalink().'">';
-		echo '<div class="full">';
-		if($headshot) {
-			echo '<div class="headshot">';
-				echo '<img src="'.$headshot['sizes']['thumbnail'].'" alt="'.$headshot['alt'].'"/>';
+			echo '<div class="full">';
+			echo '<div class="headline center"><h1>Speakers<h1></div>';
+
+			// If more than two speakers don't center the speaker container
+			if ( count($event_speakers) > 2 ) {
+				echo '<div class="people_container">';
+			} else {
+				echo '<div class="people_container_center">';
+			}
+					// Loop through speakers
+					foreach( $event_speakers as $post ) {
+
+						// Makes global post equal to the speakers object
+						setup_postdata( $post );
+
+						$speaker_image = get_field('headshot');
+						$name 		= get_the_title();
+						$link 		= get_the_permalink();
+						$job 		= get_field('job_title');
+						$headshot = get_field('headshot');	
+						
+						// Start of speaker container 
+						echo '<div class="person">';
+
+						// Speaker image
+						if($headshot) {
+							echo '<div class="headshot">';
+								echo '<img src="'.$headshot['sizes']['thumbnail'].'" alt="'.$headshot['alt'].'"/>';
+							echo '</div>';
+						}
+						else {
+							echo '<div class="headshot empty">';
+								echo '<i class="fa fa-user"></i>';
+							echo '</div>';
+						}
+
+						// Speaker name and job title
+						echo '<div class="headline">';
+							echo '<h3>'.$name.'</h3>';
+							if($job) { 
+								echo '<h4>'.$job.'</h4>'; 
+							}
+							echo '<a class="person_link" href="'.$link.'"><span class="sr">'.$name.'</span></a>';
+						echo '</div>';
+					
+					// End of speaker container
+					echo '</div>';
+					
+					}
+			
+			// End of speaker section	
+				echo '</div>';
 			echo '</div>';
-		}
-		else {
-			echo '<div class="headshot empty">';
-				echo '<i class="fa fa-user"></i>';
-			echo '</div>';
-		}
-		echo '<div class="headline">';
-			echo '<h1>'.$name.'</h1>';
-			if($job) { echo '<h4>'.$job.'</h4>'; }
-		echo '</div>';
-		echo '</a>';
-		echo '</article>';
-	}
+		echo '</article>';		
 	echo '</section>';
+	
 	wp_reset_postdata(); // reset post object to global post
 }
 
 
-
+// Show gallery of event images
 if($gallery) {
 	echo '<section class="gallery white">';
 		dirigible_gallery($gallery);
   echo '</section>';
 }
 
+// Show event location map
 if($location) {
 	echo '<section class="map_block">';
     echo '<div class="map_location acf-map">';
