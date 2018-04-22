@@ -65,6 +65,43 @@ $eventpad : ($pad*3);
       li { background: $gray;  }
     }
   }
+
+  .speaker.half {
+
+  }
+  .speakers {
+    &.half {
+      padding: 10px 0 0 0;
+
+      @include break(768px) {
+        padding: 0px $gutter;
+        }
+    }
+    .speakers-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 12px;
+
+      .speaker-image {
+        margin-right: 8px;
+        width: 42px;
+        img {
+          border-radius: 50%;
+          // width: 42px;
+        }
+        svg {
+          font-size: 42px;
+          width: 1em;
+        }
+      }
+      .speaker-name {
+        font-size: 12px;
+        font-weight: 600;
+        color: $black;
+      }
+    }
+  }
 }
 
 section.event_block  article {
