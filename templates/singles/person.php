@@ -7,6 +7,7 @@ $bio 			= get_field('biography');
 $headshot = get_field('headshot');
 $site     = get_field('website');
 $terms		= get_the_terms(get_the_id(), 'people_categories');
+$events = get_field('person_events');
 
 
 
@@ -41,6 +42,23 @@ echo '<section class="single_person">';
 			echo '<div class="description">';
 				if($bio) { echo $bio; }
 				else { echo '<p>'.get_field('biography_excerpt').'</p>';}
+
+			if ( $events) {
+				echo '<strong>Talks and workshops:</strong>';
+				echo '<ul>';
+				foreach( $events as $post ) {
+			
+					setup_postdata($post); 
+				
+					?>
+					<li>
+						<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+					</li>
+					<?php	
+				}
+				wp_reset_postdata();
+				echo '</ul>';
+			}
 			echo '</div>';
 		echo '</div>';
 		echo '</div>';
@@ -56,6 +74,5 @@ if($cats) {
 		echo '</ul>';
 	echo '</section>';
 }
-
 
 ?>
