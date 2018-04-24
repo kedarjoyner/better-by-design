@@ -38,7 +38,17 @@ function events($layout, $i) {
   );
   switch ($display) {
     case 'upcoming': break;
-    case 'past': $args['meta_compare'] = '<='; break;
+    case 'past':
+      $args['meta_query'] =
+        array(
+          'date_clause' => array(
+              'key' => 'date',
+              'compare' => '<=',
+              'value' => $today,
+              'type' => 'DATETIME',
+          ),
+        );
+      break;
     case 'category':
       $args['tax_query'] = array(
         'relation' => 'OR',
@@ -46,7 +56,8 @@ function events($layout, $i) {
 					'taxonomy' => 'event_categories',
 					'field'    => 'term_id',
 					'terms'    => $category,
-				));
+        ),
+      );
       break;
   }
   echo '<section class="event_block white">';
