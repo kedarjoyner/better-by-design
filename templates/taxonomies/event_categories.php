@@ -1,6 +1,6 @@
 <?php
 date_default_timezone_set('America/Chicago');
-$today      = date('Ymd');
+$today      = date('YmdHis');
 $term = get_queried_object();
 $args = array(
 	'post_type' => 'events',
@@ -27,8 +27,12 @@ echo '<section class="event_block white">';
 		echo '<div class="full">';
 			$query = new WP_Query($args);
 			while ($query->have_posts()) {
+
 				$query->the_post();
-				event_preview();
+				
+				if( get_field('date',get_the_id())>$today){
+					event_preview();
+				}
 			}
 			wp_reset_query();
 		echo '</div>';
