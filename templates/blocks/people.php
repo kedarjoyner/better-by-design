@@ -14,9 +14,11 @@ function people($layout, $i) {
         echo '<ul class="people_filter">';
           $filter_cats = get_sub_field('filter_categories');
           echo '<li data-filter=".show_all" class="active">Show All</li>';
-          foreach ($filter_cats as $filter) {
-            $term = get_term( $filter, 'people_categories' );
-            echo '<li data-filter=".'.$term->slug.'">'.$term->name.'</li>';
+          if ( $filter_cats ) {
+            foreach ($filter_cats as $filter) {
+              $term = get_term( $filter, 'people_categories' );
+              echo '<li data-filter=".'.$term->slug.'">'.$term->name.'</li>';
+            }
           }
         echo '</ul>';
       }
