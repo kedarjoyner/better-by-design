@@ -47,16 +47,18 @@ function event_preview() {
     echo '<a class="event_overlay" href="'.get_the_permalink().'"><span class="sr">'.get_the_title().'<span></a>';
 
     if ( $event_speakers ) {
-      echo '<div class="speakers half">';   
+      echo '<div class="speakers">';   
       // Loop through speakers
+
+      $post = $event_speakers;
+
       foreach( $event_speakers as $post ) {
 
         // Makes global post equal to the speakers object
         setup_postdata( $post );
 
         echo '<div class="speakers-container">';
-
-        $name 		= get_the_title($post->ID);
+        
         $headshot = get_field('headshot', $post->ID);	 
 
         // Speaker image
@@ -67,8 +69,6 @@ function event_preview() {
         } else {
           echo '<div class="speaker-image"><i class="fas fa-fw fa-user-circle"></i></div>';
         }
-
-        echo '<div class="speaker-name">' . $name . '</div>';
         echo '</div>';
       }
       echo "</div>";

@@ -66,29 +66,30 @@ $eventpad : ($pad*3);
     }
   }
 
-  .speakers {
-    &.half {
-      padding: 10px 0 0 0;
+  .speakers { 
 
-      @include break(768px) {
-        padding: 0px $gutter;
-        }
+    @include desktop {
+      margin-left: 20px;
     }
+
     .speakers-container {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
       margin-bottom: 12px;
+      margin: 12px 14px 12px 0;
+      float: left;
+
+      @include desktop {
+        float: none;
+      }
 
       .speaker-image {
-        margin-right: 8px;
-        width: 42px;
+        width: 64px;
+
         img {
           border-radius: 50%;
-          // width: 42px;
+          display: inline;
         }
         svg {
-          font-size: 42px;
+          font-size: 64px;
           width: 1em;
         }
       }
