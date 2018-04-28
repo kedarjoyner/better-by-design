@@ -82,18 +82,17 @@ echo '<section class="single_event white">';
 			echo '<div class="description">';
 			if($description) {
 				echo $description;
-				if($video_url) {
-					echo '<a class="button secondary" href="'.$video_url.'" title="Watch video of event">Watch Video</a>';
-	
-				}
-				if($slides) {
-					echo '<a class="button secondary" href="'.$slides.'" title="Presentation slides from event">Download Presentation</a>';
-	
-				}
-			}
-			else {
+			} else {
 				$short_description = get_field('short_description');
 				echo '<p>'.$short_description.'</p>';
+			}
+			if($video_url) {
+				echo '<a class="button secondary" href="'.$video_url.'" title="Watch video of event">Watch Video</a>';
+
+			}
+			if($slides) {
+				echo '<a class="button secondary" href="'.$slides.'" title="Presentation slides from event">Download Presentation</a>';
+
 			}
 			echo '</div>';
 		echo '</div>';
