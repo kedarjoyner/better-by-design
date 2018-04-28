@@ -45,7 +45,10 @@ section.single_event  {
 	}
 	.headline {
 		h1, h2, h4 { text-align: center; }
-		h1 { margin-bottom: 0px; }
+		h1 { 
+			margin-bottom: 0px; 
+			font-size: $h2;
+		}
 		h1 + h4 { margin: $pad 0px $pad*6 0px; }
 		h4 a {
 			color: inherit;
@@ -53,16 +56,18 @@ section.single_event  {
 		}
 	}
 	.information {
-		@include sidebar {
-			display: flex;
-			justify-content: center;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		@include desktop {
 			flex-direction: row;
 		}
 	}
 	.description {
 		text-align: left;
 		padding-top: $pad*6;
-		@include sidebar {
+		margin: 0 auto;
+		@include desktop {
 			flex-grow: 1;
 			padding-left: $pad*4;
 			padding-top: 0px;
@@ -79,7 +84,7 @@ section.single_event  {
 		@include sidebar {
 			align-self:flex-start;
 			flex-grow: 0;
-	    flex-shrink: 0;
+	    	flex-shrink: 0;
 			flex-basis: $pad*40;
 		}
 		.return {
