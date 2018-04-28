@@ -10,6 +10,8 @@ $image       = get_field('image');
 $image       = get_field('featured_image');
 $location    = get_field('location');
 $site        = get_field('website');
+$video_url   = get_field('video');
+$slides		 = get_field('slides');
 $gallery     = get_field('gallery');
 $events_page = get_field('events_page', 'options');
 $event_speakers = get_field('event_speakers');
@@ -80,6 +82,14 @@ echo '<section class="single_event white">';
 			echo '<div class="description">';
 			if($description) {
 				echo $description;
+			}
+			if($video_url) {
+				echo '<a class="button secondary" href="'.$video_url.'" title="Watch video of event">Watch Video</a>';
+
+			}
+			if($slides) {
+				echo '<a class="button secondary" href="'.$slides.'" title="Presentation slides from event">Download Presentation</a>';
+
 			}
 			else {
 				$short_description = get_field('short_description');

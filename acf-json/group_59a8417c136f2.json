@@ -247,6 +247,41 @@
             "delay": 0
         },
         {
+            "key": "field_5ae4ab1c13928",
+            "label": "Video",
+            "name": "video",
+            "type": "url",
+            "instructions": "Add video of event from conference.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5ae4ab4f13929",
+            "label": "Slides",
+            "name": "slides",
+            "type": "file",
+            "instructions": "Upload and attach presentation slides from event.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "uploadedTo",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
             "key": "field_5aa35f657bdda",
             "label": "Gallery",
             "name": "gallery",
@@ -329,5 +364,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1524361621
+    "modified": 1524940455
 }
