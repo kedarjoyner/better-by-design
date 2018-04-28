@@ -2,6 +2,7 @@
 
 
 function event_preview() {
+
   $title       = get_the_title();
   $date        = DateTime::createFromFormat('YmdHis', get_field('date'));
   $year        = $date->format('Y');
@@ -43,6 +44,8 @@ function event_preview() {
       echo '</ul>';
     echo '</div>';
 
+    echo '<a class="event_overlay" href="'.get_the_permalink().'"><span class="sr">'.get_the_title().'<span></a>';
+
     if ( $event_speakers ) {
       echo '<div class="speakers half">';   
       // Loop through speakers
@@ -72,9 +75,8 @@ function event_preview() {
 
   wp_reset_postdata(); // reset post object to global post
 }
-    echo '<a class="event_overlay" href="'.get_the_permalink().'"><span class="sr">'.get_the_title().'<span></a>';
+  
   echo '</div>';
-
 
   
 }
