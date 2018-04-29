@@ -98,6 +98,9 @@ section.image_grid {
 			@include break(1150px) { height: ($pad*50);	}
 		}
 	}
+	.image_description h4 {
+		text-align: center;
+	}
 }
 
 /* IMAGE PULL

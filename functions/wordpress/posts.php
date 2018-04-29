@@ -39,7 +39,8 @@ function create_taxonomies() {
 		'people',
 		array(
 			'label' => __( 'Categories' ),
-			'hierarchical' => true,
+      'hierarchical' => true,
+      'show_admin_column' => true,
 		)
 	);
   register_taxonomy(
@@ -47,7 +48,8 @@ function create_taxonomies() {
 		'events',
 		array(
 			'label' => __( 'Categories' ),
-			'hierarchical' => true,
+      'hierarchical' => true,
+      'show_admin_column' => true,
 		)
   );
 }
