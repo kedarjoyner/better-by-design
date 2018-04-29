@@ -28,17 +28,11 @@ echo '<section class="single_event white">';
 			echo '<h1>'.$title.'</h1>';
 
 
-			// Display categories and event types
-			$types = get_the_terms(get_the_id(), 'event_types');
+			// Display categories
 			$cats = get_the_terms(get_the_id(), 'event_categories');
 
 			echo '<section class="taxonomy_list">';
 			echo '<ul class="location_types">';
-			if($types) {
-				foreach ($types as $type) { 
-					echo '<li><a href="'.get_term_link( $type ).'">'.$type->name."</a></li>";
-				}
-			} 
 			if ($cats){
 				foreach ($cats as $term) { 
 					echo '<li><a href="'.get_term_link( $term ).'">'.$term->name."</a></li>";

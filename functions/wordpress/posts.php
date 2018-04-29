@@ -50,14 +50,6 @@ function create_taxonomies() {
 			'hierarchical' => true,
 		)
   );
-  register_taxonomy(
-    'event_types',
-    'events', 
-    array(
-      'label' => __( 'Event Type' ),
-      'hierarchical' => true
-    )
-  );
 }
 add_action( 'init', 'create_taxonomies' );
 
