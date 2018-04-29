@@ -8,9 +8,6 @@ $args = array(
 	'posts_per_page' => -1,
 	'order' => 'ASC',
 	'orderby' => 'meta_value_num',
-	'meta_key' => 'date',
-	'meta_value' => $today,
-	'meta_compare' => '>='
 );
 $args['tax_query'] = array(
 	'relation' => 'OR',
@@ -21,7 +18,6 @@ $args['tax_query'] = array(
 	)
 );
 
-
 echo '<section class="event_block white">';
 	echo '<article>';
 		echo '<div class="full">';
@@ -30,7 +26,7 @@ echo '<section class="event_block white">';
 
 				$query->the_post();
 				
-				if( get_field('date',get_the_id())>$today){
+				if( get_field('date',get_the_id()) >= $today ){
 					event_preview();
 				}
 			}
