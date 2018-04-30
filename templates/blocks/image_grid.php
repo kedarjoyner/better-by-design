@@ -22,8 +22,6 @@ function image_grid($layout, $i) {
             if($item['link']) { echo '<a class="image" href="'.$item['link'].'">';  }
             else { echo '<a class="image lightbox" target="_blank" href="'.$item['photo']['url'].'" data-caption="'.$item['headline'].' // '.$item['copy'].'">';  }
               echo '<img src="'.$item['photo']['sizes']['medium'].'" alt="'.$item['photo']['alt'].'" />';
-              if($item['link']) { echo '<i class="fas fa-angle-right"></i>'; } 
-              else { echo '<i class="fas fa-images"></i>'; }
 
               echo '<span class="sr">'.$item['headline'].'</span>';
             echo '</a>';
