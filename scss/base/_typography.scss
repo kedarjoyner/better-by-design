@@ -257,3 +257,10 @@ blockquote {
 
 h2 + h4 { margin: -($headline_margin/2) 0px $headline_margin 0px;  }
 p + h4 + p { margin-top: -$headline_margin;  }
+
+// event preview title
+
+h2.events-title {
+  margin-bottom: $pad*1;
+  margin-top: $pad*4;
+}
