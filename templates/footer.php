@@ -9,10 +9,10 @@
 
           if ($logo) {
             echo '<div class="footer-logo">';
-              echo '<img src="'.$logo.'"/>';
+              echo '<img src="'.$logo.'" alt="University of Wisconsin Madison logo"/>';
             echo '</div>';
           }
-          
+
           social_media('p', 'options');
           echo '<nav class="footer">';
           $footer_menu = array('theme_location' => 'footer-menu', 'container' => ' ', 'items_wrap' => '%3$s' );
