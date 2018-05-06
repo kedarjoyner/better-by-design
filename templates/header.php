@@ -9,7 +9,10 @@
       if(get_field('font_embed_code', 'option')) {
         echo get_field('font_embed_code', 'option'); }
       if(get_field('google_analytics_embed_code', 'option')) {
-        echo get_field('google_analytics_embed_code', 'option'); }
+        if ( !is_user_logged_in() ) {
+            echo get_field('google_analytics_embed_code', 'option'); 
+          }
+        }
     ?>
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
