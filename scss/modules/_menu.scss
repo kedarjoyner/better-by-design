@@ -227,6 +227,15 @@ nav.main {
  * styles.
  ***************************************************/
 @include desktop_menu {
+
+	body.scrolled nav.main ul.top_level {
+		li.register-button {
+			> a {
+				background-color: $secondary;
+				color: $white !important; 
+			}
+		} 
+	}
 	nav.mobile {
 		display: none;
 	}
@@ -261,7 +270,7 @@ nav.main {
 	nav.main {
 		padding: 0px;
 		width: 100%;
-		z-index: 99;
+		z-index: 999;
 		right: auto;
 		top: auto;
 		bottom: auto;
@@ -282,7 +291,20 @@ nav.main {
 				display: inline-block;
 				border-bottom: 0px;
 				position: relative;
+
 				&:hover a { background: none; }
+
+				&.register-button {
+					margin-top: 8px;
+
+					> a {
+						padding-top: 2px;
+						padding-bottom: 2px;
+						color: $primary !important;
+						background-color: $white;
+					}
+				}
+
 				> a {
 					display: inline-block;
 					&:after { display: none;  }
