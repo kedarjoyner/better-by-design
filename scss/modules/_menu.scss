@@ -275,6 +275,7 @@ nav.main {
 			margin-right: ($pad);
 			a:not(.logo) {
 				text-align: left;
+				font-size: 15px;
 				&:hover { opacity: .8; }
 			}
 			> li {
