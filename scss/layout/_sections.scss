@@ -55,6 +55,12 @@ section {
 	.background_image {
 		@extend .inline_background_image;
 	}
+
+	&.people.image {
+		.background_image {
+			z-index: 0;
+		}
+	}
 }
 
 /* HEADLINE BLOCKS
