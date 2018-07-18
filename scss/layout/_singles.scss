@@ -103,7 +103,18 @@ section.single_event  {
 		.media {
 			padding: 0px;
 			margin: 0px;
-			li { margin: 0px; padding: 1px; }
+			li { 
+				
+				margin: 0px; padding: 1px; 
+			
+				a {
+					width: 48px;
+					 svg {
+						font-size: 32px;
+					}
+				}
+			
+			}
 		}
 	}
 	.event_details {
