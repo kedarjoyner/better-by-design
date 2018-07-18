@@ -17,8 +17,11 @@ function event_preview() {
   echo '<div class="event_preview">';
 
     echo '<div class="description">';
-      if($description) {
+
+      if ($title) {
         echo '<h3>'.$title.'</h3>';
+      }
+      if($description) {     
         echo '<p>'.$description.'</p>';
       }
       echo '<ul class="information">';
