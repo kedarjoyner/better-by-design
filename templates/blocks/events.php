@@ -67,28 +67,28 @@ function events($layout, $i) {
         $query = new WP_Query($args);
 
         // Create new array called years
-        $years = array();
+        // $years = array();
 
         while ($query->have_posts()) {
           $query->the_post();
 
-          // Get date format and ACF date field
-          $date  = DateTime::createFromFormat('YmdHis', get_field('date'));
-          // Format date to return only the year
-          $year  = $date->format('Y');
+          // // Get date format and ACF date field
+          // $date  = DateTime::createFromFormat('YmdHis', get_field('date'));
+          // // Format date to return only the year
+          // $year  = $date->format('Y');
            
           // If year is not in array, then echo title          
-          if ( ! isset( $years[ $year ] ) ) {
+          // if ( ! isset( $years[ $year ] ) ) {
 
-            /* For every year inside of years, create 
-            * another array before displaying title
-            */
+          //   /* For every year inside of years, create 
+          //   * another array before displaying title
+          //   */
 
-             $years[ $year ] = array();
+          //    $years[ $year ] = array();
              
-             echo '<h2 class="events-title">'. $year . ' Conference</h2>';
+          //    echo '<h2 class="events-title">'. $year . ' Conference</h2>';
              
-          } 
+          // } 
 
           /* Display events after year array
           * otherwise title will display for every event
