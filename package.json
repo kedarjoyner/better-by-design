@@ -21,7 +21,6 @@
     "gulp-autoprefixer": "^5.0.0",
     "gulp-jshint": "^2.1.0",
     "gulp-livereload": "^3.8.1",
-    "gulp-minify": "^2.1.0",
     "gulp-sass": "^4.0.1"
   }
 }
